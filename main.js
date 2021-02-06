@@ -12,7 +12,7 @@ const gl = canvas.getContext("webgl2")
 console.log(gl)
 twgl.isWebGL2(gl) ? console.log("Webgl2 True") : console.error("Not Webgl2")
 
-const vertexShaderSource = fetch("/v.vert").then((response => {
+const vertexShaderSource = fetch("./v.vert").then((response => {
     return response.text().then( (text) => {
         //console.log(text)
         return text
@@ -20,7 +20,7 @@ const vertexShaderSource = fetch("/v.vert").then((response => {
     })
 }))
 
-const fragmentShaderSource = fetch("/f.frag").then((response => {
+const fragmentShaderSource = fetch("./f.frag").then((response => {
     return response.text().then( (text) => {
         //console.log(text)
         return text
