@@ -2,8 +2,8 @@ import * as twgl from "./twgl-full.module.js"//"/twgl.js-4.16.0/dist/4.x/twgl-fu
 
 const canvas = document.getElementById("c")
 
-canvas.width = 1200 //document.body.clientWidth - 25
-canvas.height = 800 //document.body.clientHeight - 25
+canvas.width = document.body.clientWidth - 20
+canvas.height = document.body.clientHeight - 20
 
 console.log("w: " + document.body.clientWidth)
 console.log("h: " + document.body.clientHeight)

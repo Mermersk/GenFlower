@@ -10,25 +10,17 @@ uniform vec2 u_resolution;
 
 void main() {
 
-    vec2 nc = (gl_FragCoord.xy/u_resolution);
+    vec2 nc = gl_FragCoord.xy/u_resolution;
+    //ar = aspect ratio
     float ar = u_resolution.x / u_resolution.y;
     //nc.x = nc.x * ar;
     vec4 col = vec4(0.0, 1.0, 0.0, 1.0);
     vec4 lastFrame = texture(u_fb, nc);
-    /*
-    float angle = sin(u_time) * 0.5;
-    float sinOfAngle = sin(angle);
-    float cosOfAngle = cos(angle);
-
-    mat2 rotMatrix = mat2(
-        cosOfAngle, sinOfAngle,
-        -sinOfAngle, cosOfAngle
-    );
-
-    vec4 col = vec4(0.1059, 0.9255, 0.5843, 1.0);
-    */
-    //nc.y = nc.y - (u_time / 20.0);
-    nc = (vec2(0.5) - nc) * 2.0; 
+  
+    nc = (vec2(0.5) - nc) * 2.0;
+    //FOUND ASPECT RATIO FIX: Apparantly I need to fix aspect ratio AFTER
+    //I remap the coordinate system to -1 <> 1 !
+    nc.x = nc.x * ar;
     float angle = u_random;
     float speed = u_time / 10.0;
     nc.x += cos(angle) * speed;
